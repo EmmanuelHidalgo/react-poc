@@ -1,0 +1,6 @@
+.ui.grid.segment {
+    min-height: 500px !important;
+}
+.ui.grid>.row>.ui.segment.column, .ui.grid>.ui.segment.column, .ui.page.grid.segment {
+    margin-bottom: 2em !important;
+}

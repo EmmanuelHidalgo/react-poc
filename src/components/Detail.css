@@ -1,0 +1,12 @@
+.detail-container {
+    margin-top: 2em !important;
+}
+
+.ui.piled.segment, .ui.piled.segments {
+    margin-top: 2em !important;
+    width: 100% !important;
+}
+
+ul {
+    list-style: none;
+}

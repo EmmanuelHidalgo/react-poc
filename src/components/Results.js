@@ -1,12 +1,19 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom'
+import { fetchResults } from '../actions/index';
+
+import ResultItemCard from './ResultItemCard';
+
 
 class Results extends React.Component {
 
+    componentDidMount(){
+        this.props.fetchResults('');
+    }
+
     renderResults(){
-        if(!this.props.results || this.props.results.lenght === 0) {
+        if(!this.props.results || this.props.results.length === 0) {
             return (
                 "Please make a search"
             );
@@ -14,8 +21,16 @@ class Results extends React.Component {
 
         return(
             <div className="results-container">
-                "Results"
-                <Link to="/item">Go to Item</Link>
+                <h3>Results</h3>
+                <div className="ui relaxed divided list">
+                    {
+                        this.props.results.map((result, index) => {
+                            return(
+                                <ResultItemCard key={index} item={result} />
+                            )
+                        })
+                    }
+                </div>
             </div>
         );
     }
@@ -23,7 +38,7 @@ class Results extends React.Component {
     render(){
         console.log(this.props.results);
         return(
-            <div className="eleven wide column">
+            <div className="ui placeholder segment eleven wide column">
                 {this.renderResults()}
             </div>
         )
@@ -36,4 +51,6 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(Results);
+export default connect(mapStateToProps, {
+    fetchResults
+})(Results);
